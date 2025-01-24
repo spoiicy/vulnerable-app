@@ -49,7 +49,7 @@ pipeline {
                     sh '''
                         . venv/bin/activate
                         nohup python app.py &
-                        sleep 5  // Give time for app to start
+                        sleep 5
                     '''
                 }
             }

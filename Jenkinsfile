@@ -31,7 +31,7 @@ pipeline {
                 // Install Semgrep in the virtual environment
                 sh './venv/bin/pip install semgrep'
                 // Run Semgrep scan with the configured token
-                sh './venv/bin/semgrep ci --config auto --token $SEMGREP_APP_TOKEN'
+                sh './venv/bin/semgrep ci --code'
             }
         }
 

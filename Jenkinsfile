@@ -35,29 +35,25 @@ pipeline {
         //     }
         // }
 
-        stage('Build Docker Image') {
+        stage('Build & Deploy') {
             steps {
-                echo 'Building Docker image...'
-                // Build the Docker image for deployment
-                sh 'docker build -t vulnerable-app .'
+                script {
+                    // Create virtual environment
+                    sh '''
+                        python3 -m venv venv
+                        . venv/bin/activate
+                        pip install -r requirements.txt
+                    '''
+                    
+                    // Run the application in background
+                    sh '''
+                        . venv/bin/activate
+                        nohup python app.py &
+                        sleep 5  // Give time for app to start
+                    '''
+                }
             }
-        }
-
-        stage('Deploy App') {
-            steps {
-                echo 'Deploying the application...'
-                // Run the Docker container
-                sh 'docker run -d -p 5000:5000 vulnerable-app'
-            }
-        }
-        
-        stage('Clean Up') {
-            steps {
-                echo 'Cleaning up...'
-                // Clean up virtual environment
-                sh 'rm -rf venv'
-            }
-        }
+        }       
     }
 
     post {

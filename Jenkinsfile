@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-        tage('Deploy Application') {
+        stage('Deploy Application') {
             steps {
                 echo 'Deploying the application...'
                 // Placeholder for actual deployment steps (e.g., Docker deploy, cloud deployment)

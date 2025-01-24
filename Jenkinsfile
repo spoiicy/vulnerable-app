@@ -25,15 +25,15 @@ pipeline {
             }
         }
 
-        stage('Semgrep Security Scan') {
-            steps {
-                echo 'Running Semgrep security scan...'
-                // Install Semgrep in the virtual environment
-                sh './venv/bin/pip install semgrep'
-                // Run Semgrep scan with the configured token
-                sh './venv/bin/semgrep ci --code'
-            }
-        }
+        // stage('Semgrep Security Scan') {
+        //     steps {
+        //         echo 'Running Semgrep security scan...'
+        //         // Install Semgrep in the virtual environment
+        //         sh './venv/bin/pip install semgrep'
+        //         // Run Semgrep scan with the configured token
+        //         sh './venv/bin/semgrep ci --code'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {

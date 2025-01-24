@@ -1,2 +1,6 @@
 vulnerable.db
 /virtualenv
+venv/
+.git/
+__pycache__/
+*.log

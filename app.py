@@ -37,7 +37,7 @@ def search():
 def login():
     username = request.form['username']
     password = request.form['password']
-    # XSS Vulnerability (insecure rendering of user input)
+    
     return render_template_string(f"""
         <h1>Welcome, {username}!</h1>
         <p>Your password is: {password}</p>
